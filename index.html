@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hidden Tourist Spots</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>“Discover the Unseen, Embrace the Journey”</h1>
+  </section>
+
+  <!-- Kozhikode Section -->
+  <section id="kozhikode">
+    <h2>Kozhikode</h2>
+    <div class="categories">
+      <button onclick="showCategory('kozhikode','beaches')">Beaches</button>
+      <button onclick="showCategory('kozhikode','waterfalls')">Waterfalls</button>
+      <button onclick="showCategory('kozhikode','viewpoints')">Viewpoints</button>
+      <button onclick="showCategory('kozhikode','heritage')">Heritage</button>
+    </div>
+    <div id="kozhikode-content" class="grid"></div>
+  </section>
+
+  <!-- Wayanad Section -->
+  <section id="wayanad">
+    <h2>Wayanad</h2>
+    <div class="categories">
+      <button onclick="showCategory('wayanad','viewpoints')">Viewpoints</button>
+      <button onclick="showCategory('wayanad','waterfalls')">Waterfalls</button>
+      <button onclick="showCategory('wayanad','trekking')">Trekking</button>
+      <button onclick="showCategory('wayanad','heritage')">Heritage</button>
+    </div>
+    <div id="wayanad-content" class="grid"></div>
+  </section>
+
+  <footer>
+    <p>Brought to you by 2931
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
