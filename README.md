@@ -1,29 +1,26 @@
-# Yatra Kerala
-A vanilla HTML/CSS/JavaScript PWA for discovering tourist destinations across Kerala.
+# Yatra Kerala — Next.js PWA
 
-## Run locally
-Serve the folder on localhost (service workers require localhost or HTTPS):
+A Next.js App Router + React + TypeScript experience for discovering lesser-known destinations across Kerala. This replaces the earlier vanilla prototype as the app entry point.
+
+## Run
 ```bash
-python -m http.server 8000
+npm install
+npm run dev
 ```
-Open http://localhost:8000.
 
-## Features
-- Responsive celadon / emerald visual design
-- Search and filtering by destination, district and experience
-- District navigation, rich destination detail dialog and Google Maps directions
-- Save places in localStorage
-- PWA manifest and service-worker app-shell cache
+## Direction
+- Hidden/offbeat places first; popular destinations intentionally excluded from the initial featured collection.
+- Search by place, district and experience category.
+- Destination detail modal with stories, activities, coordinates, access notes and Google Maps link.
+- Save favourites in component state (persistence can be added next).
+- Responsive Emerald / Spring Celadon visual system.
+- Web app manifest and service worker starter.
 
-## Data quality and coverage
-This is an initial curated catalogue, **not every tourist attraction in Kerala**. Kerala has 14 districts; the official Kerala Tourism site lists 79 prominent Green Carpet destinations and its Routes & Locations directory describes around 22,000 location records. Those wider records include places and route locations that are not necessarily tourist attractions. Build a verified ingestion/review workflow before claiming full coverage.
+## Data quality
+The initial field guide is an editorial starter collection, not an exhaustive or fully verified gazetteer. Coordinates are approximate map pins and must be checked against authoritative mapping and local access information before travel. Access restrictions, weather, permits and opening status can change. Some destinations are sensitive ecological or community spaces; the app intentionally avoids publishing granular trailheads or sensitive wildlife coordinates. Historical notes are cautious summaries and need destination-level citations. The image URLs are illustrative stock imagery, not guaranteed photographs of the named destination; replace with destination-specific, licensed and credited images before production.
 
-Primary references:
-- https://www.keralatourism.org/districts/
-- https://www.keralatourism.org/greencarpet/destinations
-- https://www.keralatourism.org/destination/
-- https://www.keralatourism.org/2024/routes-locations/search
-
-The sample destination pins are approximate editorial coordinates and should be verified against official maps/DTPC sources. Historical notes are concise summaries, not archival citations. Opening hours, fees and seasonal closures are not hardcoded because they change.
-
-Images currently use representative Unsplash photos and are not verified to depict the named place. Replace with destination-specific images, licence and attribution before public launch.
+Useful official references:
+- https://www.keralatourism.org/destination/unexplored-central-kerala/
+- https://www.keralatourism.org/destination/unexplored-malabar-experiences/
+- https://www.keralatourism.org/ebooks/expect-the-unexpected/contents
+- https://www.keralatourism.org/faq/what-are-the-best-unexplored-beaches-in-kerala
