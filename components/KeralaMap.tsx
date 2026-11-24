@@ -18,7 +18,7 @@ export default function KeralaMap({ places, onSelect }: { places: Destination[];
       <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <FitBounds places={places} />
       {places.map(p => <CircleMarker key={p.id} center={[p.lat,p.lng]} radius={7} pathOptions={{ color: "#f6fff8", weight: 2, fillColor: "#0b6b52", fillOpacity: .95 }}>
-        <Popup><div className="map-popup"><b>{p.name}</b><span>{p.district}</span><button onClick={() => onSelect(p)}>Open field note ↗</button></div></Popup>
+        <Popup><div className="map-popup"><b>{p.name}</b><span>{p.district} · {p.coordinatesSource?"source-linked pin":"reference pin; confirm locally"}</span><button onClick={() => onSelect(p)}>Open field note ↗</button></div></Popup>
       </CircleMarker>)}
     </MapContainer>
     <div className="map-credit">MAP DATA © OPENSTREETMAP CONTRIBUTORS · PINS ARE EDITORIAL REFERENCE POINTS</div>
