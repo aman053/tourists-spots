@@ -1,14 +1,14 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight, Search, MapPin, Compass, Heart, SlidersHorizontal, ArrowRight, Leaf, Menu, X, Clock3, Footprints, ExternalLink } from "lucide-react";
 import { destinations, districts, type Destination } from "@/data/destinations";
 
 const categories = ["All finds","Waterfalls","Hills & trails","Coast & islands","Backwaters","Heritage","Forest & wildlife","Village life"];
 const categoryMap:Record<string,string> = {"Waterfalls":"Waterfall","Hills & trails":"Hill","Coast & islands":"Coast","Backwaters":"Backwater","Heritage":"Heritage","Forest & wildlife":"Nature","Village life":"Culture"};
 export default function Home(){
- const [query,setQuery]=useState(""); const [district,setDistrict]=useState("All Kerala"); const [category,setCategory]=useState("All finds"); const [saved,setSaved]=useState<string[]>([]); const [showAll,setShowAll]=useState(false); const [menu,setMenu]=useState(false); const [selected,setSelected]=useState<Destination|null>(null);
+ useEffect(()=>{ if("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(()=>{}); const stored=localStorage.getItem("yatra-saved"); if(stored) setSaved(JSON.parse(stored)); },[]);\n const [query,setQuery]=useState(""); const [district,setDistrict]=useState("All Kerala"); const [category,setCategory]=useState("All finds"); const [saved,setSaved]=useState<string[]>([]); const [showAll,setShowAll]=useState(false); const [menu,setMenu]=useState(false); const [selected,setSelected]=useState<Destination|null>(null);
  const filtered=useMemo(()=>destinations.filter(p=>(district==="All Kerala"||p.district===district)&&(category==="All finds"||p.kind===categoryMap[category])&&(!query||[p.name,p.district,p.kind,p.summary,p.tags.join(" ")].join(" ").toLowerCase().includes(query.toLowerCase()))),[query,district,category]);
- const toggleSaved=(id:string)=>setSaved(v=>v.includes(id)?v.filter(x=>x!==id):[...v,id]);
+ const toggleSaved=(id:string)=>setSaved(v=>{const next=v.includes(id)?v.filter(x=>x!==id):[...v,id];localStorage.setItem("yatra-saved",JSON.stringify(next));return next;});
  return <main>
  <nav className="nav"><a className="logo" href="#"><span className="logo-mark">യാ</span><span>yatra<span className="logo-light">kerala</span></span></a><div className={menu?"navlinks open":"navlinks"}><a href="#discover">Discover</a><a href="#regions">Regions</a><a href="#philosophy">Our approach</a></div><div className="navright"><span className="edition">FIELD NOTES · 001</span><button className="menu-toggle" onClick={()=>setMenu(!menu)} aria-label="Toggle menu">{menu?<X/>:<Menu/>}</button><a className="nav-cta" href="#discover">Find your somewhere <ArrowUpRight size={15}/></a></div></nav>
  <section className="hero"><div className="hero-bg"/><div className="hero-shade"/><div className="hero-content"><div className="overline"><span/> A DIFFERENT SIDE OF GOD’S OWN COUNTRY</div><h1>Not the Kerala<br/>you’ve <i>already</i><br/>seen.</h1><p>Past the postcards. Beyond the familiar. Find the quiet trails, forgotten stories and little-known places that make Kerala feel undiscovered.</p><a className="hero-link" href="#discover">Explore the other side <ArrowUpRight/></a></div><div className="hero-foot"><span>08° 30' N — 76° 58' E</span><span>14 DISTRICTS · COUNTLESS DETOURS</span></div><div className="hero-stamp">GO<br/>SLOW.<br/><i>LOOK<br/>CLOSER.</i></div></section>
