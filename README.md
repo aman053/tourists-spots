@@ -1,4 +1,4 @@
-# Yatra Kerala — Next.js field guide
+# Hidgreen — Kerala hidden-gems field guide
 
 A responsive Next.js + React + TypeScript guide to lesser-known places across all 14 districts of Kerala.
 
